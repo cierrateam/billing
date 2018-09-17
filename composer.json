@@ -1,0 +1,27 @@
+{
+    "name": "cierrateam/billing",
+    "description": "Billing - Package for Laravel",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "5.*"
+    },
+    "author": {
+        "name": "Vittorio Emmermann ",
+        "email": "vittorio@cierra.eu"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cierrateam\\Billing\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cierrateam\\Billing\\BillingServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
