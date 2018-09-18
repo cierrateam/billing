@@ -16,7 +16,7 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table){
             $table->increments('id');
             $table->integer('numrange_id')->unsigned();
-            $table->integer('canceled_receipt_id')->nullable()->unsigned();
+            $table->integer('canceled_bill_id')->nullable()->unsigned();
             $table->string('number');
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('days_to_pay')->default(14);
@@ -32,6 +32,12 @@ class CreateBillsTable extends Migration
             $table->boolean('accepted')->default(0);
             $table->timestamp('accepted_at')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('bills', function(Blueprint $table){
+            $table->foreign('numrange_id')->references('id')->on('numranges');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('canceled_bill_id')->references('id')->on('bill');
         });
     }
 

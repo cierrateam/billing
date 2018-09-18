@@ -15,7 +15,7 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bill_positions', function (Blueprint $table){
             $table->increments('id');
-            $table->integer('bill_id')->unsigned();
+            $table->integer('bill_id')->unsigned()->index();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
             $table->integer('amount')->default(1);
@@ -23,6 +23,9 @@ class CreateBillsTable extends Migration
             $table->string('price');
             $table->integer('percent_discount')->default(0);
             $table->timestamps();
+        });
+        Schema::table('bill_positions', function(Blueprint $table){
+            $table->foreign('bill_id')->references('id')->on('bills');
         });
     }
 

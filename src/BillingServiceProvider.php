@@ -14,13 +14,12 @@ class BillingServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $router->aliasMiddleware('billing', \Cierrateam\Billing\Middleware\BillingMiddleware::class);
 
         $this->publishes([
             __DIR__.'/Config/billing.php' => config_path('billing.php'),
         ], 'billing_config');
 
-        $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/Routes/api.php');
 
         $this->loadMigrationsFrom(__DIR__ . '/Migrations');
 
@@ -30,15 +29,8 @@ class BillingServiceProvider extends ServiceProvider
             __DIR__ . '/Translations' => resource_path('lang/vendor/billing'),
         ]);
 
-        $this->loadViewsFrom(__DIR__ . '/Views', 'billing');
 
-        $this->publishes([
-            __DIR__ . '/Views' => resource_path('views/vendor/billing'),
-        ]);
-
-        $this->publishes([
-            __DIR__ . '/Assets' => public_path('vendor/billing'),
-        ], 'billing_assets');
+        // Consle part
 
         if ($this->app->runningInConsole()) {
             $this->commands([
