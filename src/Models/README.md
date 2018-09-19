@@ -1,3 +1,3 @@
 # Billing Classes
 
-All the billing classes are located in this folder
+All the billing models are located in this folder
