@@ -30,7 +30,7 @@ class CreateNumrangesTable extends Migration
 
         Schema::table('numranges', function(Blueprint $table) {
             $table->foreign('next_range_id')->references('id')->on('numranges');
-            $table->foreign('storno_numrange_id')->references('id')->on('numranges');            $table->foreign('next_range_id')->references('id')->on('numranges');
+            $table->foreign('storno_numrange_id')->references('id')->on('numranges');
         });
     }
 

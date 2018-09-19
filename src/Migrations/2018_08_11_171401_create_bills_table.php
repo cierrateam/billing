@@ -37,7 +37,7 @@ class CreateBillsTable extends Migration
         Schema::table('bills', function(Blueprint $table){
             $table->foreign('numrange_id')->references('id')->on('numranges');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('canceled_bill_id')->references('id')->on('bill');
+            $table->foreign('canceled_bill_id')->references('id')->on('bills');
         });
     }
 
